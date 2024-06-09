@@ -44,6 +44,10 @@
         &__newsfeed{
             width: 1290px;
             height: 1095px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
         }
     }
 }
