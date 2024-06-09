@@ -1,0 +1,49 @@
+
+:host{
+
+    .homepage{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        &__wrapper{
+            width: 1440px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+        &__header{
+            width: 1290px;
+            height: 130px;
+            display: flex;
+            flex-direction: column;
+        }
+        &__header-title{
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            line-height: 19.5px;
+        }
+        &__keyboard-input{
+            width: 600px;
+            height: 50px;
+            border: 1px solid #eaeaea;
+            box-shadow: 0px 8px 24px 0px #0000000D;
+        }
+        &__header-subtitle{
+            margin-top: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 19.5px;
+            padding-bottom: 2px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        &__newsfeed{
+            width: 1290px;
+            height: 1095px;
+        }
+    }
+}
