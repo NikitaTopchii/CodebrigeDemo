@@ -2,16 +2,16 @@
     <div class="homepage__wrapper">
         <div class="homepage__header">
             <span class="homepage__header-title">Filter by keywords</span>
-            <input class="homepage__keyboard-input">
-            <span class="homepage__header-subtitle">Results: 6</span>
+            <div class="homepage__search-container">
+                <img src="../../../assets/search-icon.svg" class="homepage__search-icon">
+                <input class="homepage__keyboard-input">
+            </div>
+            <span class="homepage__header-subtitle">Results: {{getAmountOfNews()}}</span>
         </div>
         <div class="homepage__newsfeed">
             @for (currentNewsBlock of getNewsBlocks(); track $index) {
                 <app-news-block [currentNewsBlockData]="currentNewsBlock"></app-news-block>
             }
-            <ng-container *ngFor="let currentNewsBlock of getNewsBlocks()">
-                <app-news-block [currentNewsBlockData]="currentNewsBlock"></app-news-block>
-            </ng-container>
         </div>
     </div>
 </div>

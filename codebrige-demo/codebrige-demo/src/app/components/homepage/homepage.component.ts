@@ -29,6 +29,10 @@ export class HomepageComponent implements OnInit{
     return this.newsBlocks;
   }
 
+  getAmountOfNews(){
+    return this.newsBlocks.length;
+  }
+
   trackByIndex(index: number, item: any): number {
     return index;
   }
