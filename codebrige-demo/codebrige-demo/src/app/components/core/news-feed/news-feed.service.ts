@@ -21,7 +21,8 @@ export class NewsFeedService {
           imageUrl: newsBlock.image_url,
           title: newsBlock.title,
           publishDate: this.dateConvertor.getFormattedDate(newsBlock.published_at),
-          shortDescription: newsBlock.summary
+          shortDescription: newsBlock.summary,
+          showState: true
         }
       })
     }));

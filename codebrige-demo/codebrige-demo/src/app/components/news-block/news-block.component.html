@@ -9,11 +9,9 @@
                 <span class="news-block__data-info-title">{{currentNewsBlockData.publishDate}}</span>
             </div>
             <div class="news-block__main-content">
-                <span class="news-block__main-content-title">
-                    {{currentNewsBlockData.title}}
+                <span class="news-block__main-content-title" [innerHTML]="currentNewsBlockData.title | highlightSearch: search">
                 </span>
-                <span class="news-block__main-content-paragraph">
-                    {{currentNewsBlockData.shortDescription}}
+                <span class="news-block__main-content-paragraph" [innerHTML]="currentNewsBlockData.shortDescription | highlightSearch: search">
                 </span>
             </div>
             <div class="news-block__action-footer">

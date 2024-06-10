@@ -1,4 +1,6 @@
 
+@import "../styles/colors.scss";
+
 :host{
     .news-block{
 
@@ -7,7 +9,7 @@
             width: 400px;
             height: 530px;
             border-radius: 5px;
-            border: 1px solid #eaeaea;
+            border: 1px solid $input-border-color;
             box-shadow: 0px 8px 24px 0px #0000000D;
             transition: 0.3s;
         }
@@ -54,6 +56,7 @@
             font-weight: 400;
             font-size: 24px;
             line-height: 29.26px;
+            color: $text-title-news-color;
         }
         &__main-content-paragraph{
             font-size: 16px;
@@ -65,6 +68,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             -webkit-line-clamp: 3;
+            color: $text-summary-news-color;
         }
         &__action-footer{
             margin-top: 22.5px;

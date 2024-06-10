@@ -4,13 +4,13 @@
             <span class="homepage__header-title">Filter by keywords</span>
             <div class="homepage__search-container">
                 <img src="../../../assets/search-icon.svg" class="homepage__search-icon">
-                <input class="homepage__keyboard-input">
+                <input class="homepage__keyboard-input" (input)="onSearch($event)">
             </div>
-            <span class="homepage__header-subtitle">Results: {{getAmountOfNews()}}</span>
+            <span class="homepage__header-subtitle">Results: 3</span>
         </div>
         <div class="homepage__newsfeed">
-            @for (currentNewsBlock of getNewsBlocks(); track $index) {
-                <app-news-block [currentNewsBlockData]="currentNewsBlock"></app-news-block>
+            @for (currentNewsBlock of $news | async; track $index) {
+                <app-news-block [currentNewsBlockData]="currentNewsBlock" [searched]="searchText"></app-news-block>
             }
         </div>
     </div>

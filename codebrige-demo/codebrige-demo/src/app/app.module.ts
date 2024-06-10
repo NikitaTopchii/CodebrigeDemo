@@ -7,12 +7,14 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { NewsBlockComponent } from './components/news-block/news-block.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { HighLightSearchPipe } from './components/core/pipes/high-light-search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    NewsBlockComponent
+    NewsBlockComponent,
+    HighLightSearchPipe
   ],
   imports: [
     BrowserModule,

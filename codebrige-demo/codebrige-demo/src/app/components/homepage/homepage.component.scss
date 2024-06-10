@@ -1,4 +1,6 @@
 
+@import "../styles/colors.scss";
+
 :host{
 
     .homepage{
@@ -41,9 +43,9 @@
             width: 600px;
             height: 50px;
             font-size: 16px;
-            color: #575757;
+            color: $text-input-color;
             padding-left: 50px;
-            border: 1px solid #eaeaea;
+            border: 1px solid $input-border-color;
             transition: 0.8s;
             box-shadow: 0px 8px 24px 0px #0000000D;
         }
@@ -53,7 +55,7 @@
             font-weight: 600;
             line-height: 19.5px;
             padding-bottom: 2px;
-            border-bottom: 1px solid #eaeaea;
+            border-bottom: 1px solid $input-border-color;
         }
         &__newsfeed{
             width: 1290px;
@@ -68,5 +70,9 @@
     input:focus{
         outline: none;
         background-color: rgb(245, 245, 245);
+    }
+
+    .hidden-newsblock{
+        display: none;
     }
 }

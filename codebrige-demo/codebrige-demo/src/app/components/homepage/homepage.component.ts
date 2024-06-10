@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { NewsFeedService } from '../core/news-feed/news-feed.service';
 import { NewsBlock } from '../shared/types/news-block';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
@@ -9,7 +10,8 @@ import { NewsBlock } from '../shared/types/news-block';
 })
 export class HomepageComponent implements OnInit{
 
-  private newsBlocks: NewsBlock[] = [];
+  $news!: Observable<NewsBlock[]>;
+  searchText: string = '';
 
   constructor(private newsFeedService: NewsFeedService){
 
@@ -20,20 +22,15 @@ export class HomepageComponent implements OnInit{
   }
 
   initHomepage(){
-    this.newsFeedService.getNewsFeed().subscribe((newsBlocks: NewsBlock[]) => {
-      this.newsBlocks = newsBlocks;
-    });
+    this.$news = this.newsFeedService.getNewsFeed();
   }
 
-  getNewsBlocks(){
-    return this.newsBlocks;
+  public onSearch(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.searchText = inputElement.value;
   }
 
-  getAmountOfNews(){
-    return this.newsBlocks.length;
-  }
-
-  trackByIndex(index: number, item: any): number {
-    return index;
+  onHighlightDetected(event: boolean, currentNewsBlock: NewsBlock){
+    currentNewsBlock.showState = !event;
   }
 }

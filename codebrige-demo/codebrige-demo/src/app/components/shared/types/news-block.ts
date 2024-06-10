@@ -3,5 +3,6 @@ export interface NewsBlock {
     imageUrl: string,
     publishDate: string,
     title: string,
-    shortDescription: string
+    shortDescription: string,
+    showState: boolean
 }
