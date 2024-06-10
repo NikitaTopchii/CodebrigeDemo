@@ -6,7 +6,7 @@
                 <img src="../../../assets/search-icon.svg" class="homepage__search-icon">
                 <input class="homepage__keyboard-input" (input)="onSearch($event)">
             </div>
-            <span class="homepage__header-subtitle">Results: 3</span>
+            <span class="homepage__header-subtitle">Results: {{ ($news | async)?.length }}</span>
         </div>
         <div class="homepage__newsfeed">
             @for (currentNewsBlock of $news | async; track $index) {

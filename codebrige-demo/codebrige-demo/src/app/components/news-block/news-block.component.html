@@ -14,7 +14,7 @@
                 <span class="news-block__main-content-paragraph" [innerHTML]="currentNewsBlockData.shortDescription | highlightSearch: search">
                 </span>
             </div>
-            <div class="news-block__action-footer">
+            <div class="news-block__action-footer" (click)="navigateToArticle()">
                 <span class="news-block__action-footer-title">Read more</span>
                 <img src="../../../assets/read-more-arrow.svg">
             </div>

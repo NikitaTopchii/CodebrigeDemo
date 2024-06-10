@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { NewsBlock } from '../shared/types/news-block';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-news-block',
@@ -14,6 +15,10 @@ export class NewsBlockComponent implements OnInit, OnChanges{
   @Input() currentNewsBlockData!: NewsBlock;
   @Input() searched: string = '';
   @Output() highlightDetected: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  constructor(private router: Router){
+      
+  }
 
   ngOnInit(): void {}
 
@@ -33,5 +38,9 @@ export class NewsBlockComponent implements OnInit, OnChanges{
     }
     // Висилаємо подію про наявність виділеного тексту
     this.highlightDetected.emit(this.hasHighlightedText);
+  }
+
+  navigateToArticle(){
+    this.router.navigate(['article']);
   }
 }
