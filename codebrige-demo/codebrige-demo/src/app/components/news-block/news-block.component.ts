@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NewsBlock } from '../shared/types/news-block';
 
 @Component({
   selector: 'app-news-block',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./news-block.component.scss']
 })
 export class NewsBlockComponent {
+
+  @Input() currentNewsBlockData!: NewsBlock;
+
 
 }

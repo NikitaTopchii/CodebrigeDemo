@@ -6,13 +6,12 @@
             <span class="homepage__header-subtitle">Results: 6</span>
         </div>
         <div class="homepage__newsfeed">
-            <app-news-block></app-news-block>
-            <app-news-block></app-news-block>
-            <app-news-block></app-news-block>
-            <app-news-block></app-news-block>
-            <app-news-block></app-news-block>
-            <app-news-block></app-news-block>
-            <app-news-block></app-news-block>
+            @for (currentNewsBlock of getNewsBlocks(); track $index) {
+                <app-news-block [currentNewsBlockData]="currentNewsBlock"></app-news-block>
+            }
+            <ng-container *ngFor="let currentNewsBlock of getNewsBlocks()">
+                <app-news-block [currentNewsBlockData]="currentNewsBlock"></app-news-block>
+            </ng-container>
         </div>
     </div>
 </div>

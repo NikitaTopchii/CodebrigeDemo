@@ -1,6 +1,6 @@
 <div class="news-block">
     <div class="news-block__wrapper">
-        <div class="news-block__image">
+        <div class="news-block__image" [ngStyle]="{'background-image': 'url(' + currentNewsBlockData.imageUrl + ')'}">
 
         </div>
         <div class="news-block__short-info">
@@ -10,12 +10,10 @@
             </div>
             <div class="news-block__main-content">
                 <span class="news-block__main-content-title">
-                    The 2020 World's Most Valuable Brands
+                    {{currentNewsBlockData.title}}
                 </span>
                 <span class="news-block__main-content-paragraph">
-                    Non sed molestie tortor massa vitae in mattis. 
-                    Eget vel consequat hendrerit commodo libero 
-                    aliquam. Urna arcu nunc tortor vitae pharetra...
+                    {{currentNewsBlockData.shortDescription}}
                 </span>
             </div>
             <div class="news-block__action-footer">

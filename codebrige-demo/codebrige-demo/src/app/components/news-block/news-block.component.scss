@@ -13,7 +13,9 @@
         &__image{
             height: 217px;
             width: 400px;
-            background: url("../../../assets/test-image.jpg");
+            background-size: cover;
+            background-position: center;
+            //background: url("../../../assets/test-image.jpg");
         }
         &__short-info{
             width: 400px;
