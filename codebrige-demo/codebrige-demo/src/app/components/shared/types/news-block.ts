@@ -4,5 +4,6 @@ export interface NewsBlock {
     publishDate: string,
     title: string,
     shortDescription: string,
-    showState: boolean
+    titleHighlightAmount: number,
+    descriptionHighlightAmount: number
 }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { NewsBlock } from '../shared/types/news-block';
 import { Route, Router } from '@angular/router';
+import { SortNewsService } from '../core/sort-news/sort-news.service';
 
 @Component({
   selector: 'app-news-block',
@@ -14,9 +15,9 @@ export class NewsBlockComponent implements OnInit, OnChanges{
 
   @Input() currentNewsBlockData!: NewsBlock;
   @Input() searched: string = '';
-  @Output() highlightDetected: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() highlightDetected: EventEmitter<{amountOfHighlightTextTitle: number, amountOfHighlightTextDescription: number}> = new EventEmitter<{amountOfHighlightTextTitle: number, amountOfHighlightTextDescription: number}>();
 
-  constructor(private router: Router){
+  constructor(private router: Router, private sortNewsService: SortNewsService){
       
   }
 
@@ -26,18 +27,12 @@ export class NewsBlockComponent implements OnInit, OnChanges{
     if (changes['searched']) {
       this.search = changes['searched'].currentValue;
     }
-    this.checkHighlightedText(); // Викликаємо функцію для перевірки наявності виділеного тексту
+    this.checkHighlightedText();
   }
 
   checkHighlightedText(): void {
-    // Перевіряємо, чи є виділений текст у заголовку або у короткому описі
-    if (this.currentNewsBlockData.title.includes(this.search) || this.currentNewsBlockData.shortDescription.includes(this.search)) {
-      this.hasHighlightedText = true;
-    } else {
-      this.hasHighlightedText = false;
-    }
-    // Висилаємо подію про наявність виділеного тексту
-    this.highlightDetected.emit(this.hasHighlightedText);
+
+    this.highlightDetected.emit(this.sortNewsService.checkHighlightedText(this.currentNewsBlockData, this.search));
   }
 
   navigateToArticle(){

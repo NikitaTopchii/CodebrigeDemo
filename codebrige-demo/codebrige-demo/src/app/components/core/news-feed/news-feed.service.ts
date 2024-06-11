@@ -18,7 +18,7 @@ export class NewsFeedService extends BaseHttpClientService{
   getNewsFeed(){
     const formData = new FormData();
 
-    formData.append('limit', '100');
+    formData.append('limit', '10');
 
     return this.http.get(api_url + ENDPOINTS.ARTICLES, { params: this.createHttpParams(formData) })
     .pipe(map((response: any) => response.results))
@@ -29,7 +29,8 @@ export class NewsFeedService extends BaseHttpClientService{
           title: newsBlock.title,
           publishDate: this.dateConvertor.getFormattedDate(newsBlock.published_at),
           shortDescription: newsBlock.summary,
-          showState: true
+          titleHighlightAmount: 0,
+          descriptionHighlightAmount: 0
         }
       })
     }));

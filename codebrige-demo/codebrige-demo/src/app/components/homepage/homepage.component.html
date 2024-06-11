@@ -10,7 +10,7 @@
         </div>
         <div class="homepage__newsfeed">
             @for (currentNewsBlock of $news | async; track $index) {
-                <app-news-block [currentNewsBlockData]="currentNewsBlock" [searched]="searchText"></app-news-block>
+                <app-news-block [currentNewsBlockData]="currentNewsBlock" [searched]="searchText" (highlightDetected)="updateHighlightAmount($index, $event.amountOfHighlightTextTitle, $event.amountOfHighlightTextDescription, getNewsSubject())"></app-news-block>
             }
         </div>
     </div>

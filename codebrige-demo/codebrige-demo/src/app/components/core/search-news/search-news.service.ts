@@ -30,7 +30,8 @@ export class SearchNewsService extends BaseHttpClientService {
           title: newsBlock.title,
           publishDate: this.dateConvertor.getFormattedDate(newsBlock.published_at),
           shortDescription: newsBlock.summary,
-          showState: true
+          titleHighlightAmount: 0,
+          descriptionHighlightAmount: 0
         }
       })
     }));
