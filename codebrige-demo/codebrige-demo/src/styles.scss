@@ -6,6 +6,10 @@ body{
     font-family: "Montserrat", sans-serif;
 }
 
+body::-webkit-scrollbar {
+    display: none; /* Приховує скролбар для браузерів на основі WebKit (Chrome, Safari) */
+}
+
 .highlight {
     background-color: $text-highlight-color;
 }

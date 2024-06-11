@@ -1,4 +1,4 @@
 export const ENDPOINTS = {
     ARTICLES: 'articles',
-    BLOGS: 'blogs'
+    BLOGS: 'blogs',
 } 

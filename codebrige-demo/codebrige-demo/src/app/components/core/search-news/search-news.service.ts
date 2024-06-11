@@ -1,24 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseHttpClientService } from '../base-http-client/base-http-client.service';
 import { api_url } from '../../shared/application-context';
+import { ENDPOINTS } from '../../shared/endpoints/endpoints';
 import { map } from 'rxjs';
 import { DateConvertorService } from '../data-convertor/date-convertor.service';
-import { ENDPOINTS } from '../../shared/endpoints/endpoints';
-import { BaseHttpClientService } from '../base-http-client/base-http-client.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NewsFeedService extends BaseHttpClientService{
+export class SearchNewsService extends BaseHttpClientService {
 
   constructor(private http: HttpClient, private dateConvertor: DateConvertorService) {
     super();
    }
 
-  getNewsFeed(){
+  search(searchText: string){
     const formData = new FormData();
 
-    formData.append('limit', '100');
+    formData.append('title_contains_all', searchText)
+    formData.append('summary_contains_all', searchText)
 
     return this.http.get(api_url + ENDPOINTS.ARTICLES, { params: this.createHttpParams(formData) })
     .pipe(map((response: any) => response.results))

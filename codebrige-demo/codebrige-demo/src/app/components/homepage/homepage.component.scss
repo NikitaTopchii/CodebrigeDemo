@@ -59,10 +59,9 @@
         }
         &__newsfeed{
             width: 1290px;
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: 42px;
             margin-bottom: 30px;
         }
     }
