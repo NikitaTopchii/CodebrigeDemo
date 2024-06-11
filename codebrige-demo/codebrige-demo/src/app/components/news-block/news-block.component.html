@@ -11,7 +11,7 @@
             <div class="news-block__main-content">
                 <span class="news-block__main-content-title" [innerHTML]="currentNewsBlockData.title | highlightSearch: search">
                 </span>
-                <span class="news-block__main-content-paragraph" [innerHTML]="currentNewsBlockData.shortDescription | highlightSearch: search">
+                <span class="news-block__main-content-paragraph" [innerHTML]="(currentNewsBlockData.shortDescription | highlightSearch: search) | truncate:100">
                 </span>
             </div>
             <div class="news-block__action-footer" (click)="navigateToArticle()">

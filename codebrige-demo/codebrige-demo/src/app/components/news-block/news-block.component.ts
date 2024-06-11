@@ -36,6 +36,6 @@ export class NewsBlockComponent implements OnInit, OnChanges{
   }
 
   navigateToArticle(){
-    this.router.navigate(['article']);
+    this.router.navigate(['article', { id: this.currentNewsBlockData.id }]);
   }
 }

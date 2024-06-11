@@ -26,6 +26,7 @@ export class SearchNewsService extends BaseHttpClientService {
     .pipe(map((news: any) => {
       return news.map((newsBlock: any) => {
         return {
+          id: newsBlock.id,
           imageUrl: newsBlock.image_url,
           title: newsBlock.title,
           publishDate: this.dateConvertor.getFormattedDate(newsBlock.published_at),

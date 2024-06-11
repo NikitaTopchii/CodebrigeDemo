@@ -8,13 +8,17 @@ import { NewsBlockComponent } from './components/news-block/news-block.component
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HighLightSearchPipe } from './components/core/pipes/high-light-search.pipe';
+import { ArticlePageComponent } from './components/article-page/article-page.component';
+import { TruncatePipe } from './components/core/pipes/truncate/truncate.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
     NewsBlockComponent,
-    HighLightSearchPipe
+    ArticlePageComponent,
+    HighLightSearchPipe,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,

@@ -25,6 +25,7 @@ export class NewsFeedService extends BaseHttpClientService{
     .pipe(map((news: any) => {
       return news.map((newsBlock: any) => {
         return {
+          id: newsBlock.id,
           imageUrl: newsBlock.image_url,
           title: newsBlock.title,
           publishDate: this.dateConvertor.getFormattedDate(newsBlock.published_at),
@@ -33,6 +34,28 @@ export class NewsFeedService extends BaseHttpClientService{
           descriptionHighlightAmount: 0
         }
       })
+    }));
+  }
+
+  getNewsBlockById(id: number){
+    const formData = new FormData();
+
+    console.log(id);
+    
+
+    formData.append('limit', '10');
+
+    return this.http.get(api_url + ENDPOINTS.ARTICLES + `/${id}/` )
+    .pipe(map((newsBlock: any) => {
+      return {
+        id: newsBlock.id,
+        imageUrl: newsBlock.image_url,
+        title: newsBlock.title,
+        publishDate: this.dateConvertor.getFormattedDate(newsBlock.published_at),
+        shortDescription: newsBlock.summary,
+        titleHighlightAmount: 0,
+        descriptionHighlightAmount: 0
+      }
     }));
   }
 }

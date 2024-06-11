@@ -62,12 +62,6 @@
             font-size: 16px;
             font-weight: 400;
             line-height: 24px;
-            height: 70px;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            -webkit-line-clamp: 3;
             color: $text-summary-news-color;
         }
         &__action-footer{
