@@ -1,0 +1,23 @@
+<div class="news-block">
+    <div class="news-block__wrapper">
+        <div class="news-block__image" [ngStyle]="{'background-image': 'url(' + currentNewsBlockData.imageUrl + ')'}">
+
+        </div>
+        <div class="news-block__short-info">
+            <div class="news-block__data-info">
+                <img src="../../../assets/data-info-icon.svg">
+                <span class="news-block__data-info-title">{{currentNewsBlockData.publishDate}}</span>
+            </div>
+            <div class="news-block__main-content">
+                <span class="news-block__main-content-title" [innerHTML]="currentNewsBlockData.title | highlightSearch: search">
+                </span>
+                <span class="news-block__main-content-paragraph" [innerHTML]="(currentNewsBlockData.shortDescription | highlightSearch: search) | truncate:100">
+                </span>
+            </div>
+            <div class="news-block__action-footer" (click)="navigateToArticle()">
+                <span class="news-block__action-footer-title">Read more</span>
+                <img src="../../../assets/read-more-arrow.svg">
+            </div>
+        </div>
+    </div>
+</div>

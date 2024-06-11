@@ -1,0 +1,10 @@
+<div class="article">
+    <div class="article__wrapper">
+        <div class="article__header" [ngStyle]="{'background-image': 'url(' + currentNewsBlockData?.imageUrl + ')'}">
+        </div>
+        <div class="article__content">
+            <span class="article__content-title">{{ currentNewsBlockData?.title }}</span>
+            <span class="article__content-description">{{ currentNewsBlockData?.shortDescription}}</span>
+        </div>
+    </div>
+</div>
