@@ -16,11 +16,7 @@ export class NewsFeedService extends BaseHttpClientService{
    }
 
   getNewsFeed(){
-    const formData = new FormData();
-
-    formData.append('limit', '10');
-
-    return this.http.get(api_url + ENDPOINTS.ARTICLES, { params: this.createHttpParams(formData) })
+    return this.http.get(api_url + ENDPOINTS.ARTICLES, { params: { limit: 10 } })
     .pipe(map((response: any) => response.results))
     .pipe(map((news: any) => {
       return news.map((newsBlock: any) => {
@@ -38,13 +34,6 @@ export class NewsFeedService extends BaseHttpClientService{
   }
 
   getNewsBlockById(id: number){
-    const formData = new FormData();
-
-    console.log(id);
-    
-
-    formData.append('limit', '10');
-
     return this.http.get(api_url + ENDPOINTS.ARTICLES + `/${id}/` )
     .pipe(map((newsBlock: any) => {
       return {
