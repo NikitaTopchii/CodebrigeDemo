@@ -1,10 +1,14 @@
 <div class="article">
     <div class="article__wrapper">
-        <div class="article__header" [ngStyle]="{'background-image': 'url(' + currentNewsBlockData?.imageUrl + ')'}">
+        <div class="article__header" [ngStyle]="{'background-image': 'url(' + currentArticleData?.image_url + ')'}">
         </div>
         <div class="article__content">
-            <span class="article__content-title">{{ currentNewsBlockData?.title }}</span>
-            <span class="article__content-description">{{ currentNewsBlockData?.shortDescription}}</span>
+            <span class="article__content-title">{{ currentArticleData?.title }}</span>
+            <span class="article__content-description">{{ currentArticleData?.summary}}</span>
+            <div class="article__action-footer" (click)="backButton()">
+              <img src="../../../assets/read-more-arrow.svg" class="article__action-footer-icon">
+              <span class="article__action-footer-title">Back to homepage</span>
+            </div>
         </div>
     </div>
 </div>

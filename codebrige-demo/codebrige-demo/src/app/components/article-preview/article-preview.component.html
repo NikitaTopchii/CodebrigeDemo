@@ -1,0 +1,23 @@
+<div class="article-preview">
+    <div class="article-preview__wrapper">
+        <div class="article-preview__image" [ngStyle]="{'background-image': 'url(' + currentArticleData.image_url + ')'}">
+
+        </div>
+        <div class="article-preview__short-info">
+            <div class="article-preview__data-info">
+                <img src="../../../assets/data-info-icon.svg">
+                <span class="article-preview__data-info-title">{{ currentArticleData.published_at | dateFormat }}</span>
+            </div>
+            <div class="article-preview__main-content">
+                <span class="article-preview__main-content-title" [innerHTML]="currentArticleData.title | highlightSearch: search">
+                </span>
+                <span class="article-preview__main-content-summary" [innerHTML]="(currentArticleData.summary | highlightSearch: search) | truncate:100">
+                </span>
+            </div>
+            <div class="article-preview__action-footer" (click)="navigateToArticle()">
+                <span class="article-preview__action-footer-title">Read more</span>
+                <img src="../../../assets/read-more-arrow.svg">
+            </div>
+        </div>
+    </div>
+</div>

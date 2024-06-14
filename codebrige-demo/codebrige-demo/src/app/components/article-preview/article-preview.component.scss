@@ -2,7 +2,7 @@
 @import "../styles/colors.scss";
 
 :host{
-    .news-block{
+    .article-preview{
 
         &__wrapper{
             margin-top: 25px;
@@ -58,7 +58,7 @@
             line-height: 29.26px;
             color: $text-title-news-color;
         }
-        &__main-content-paragraph{
+        &__main-content-summary{
             font-size: 16px;
             font-weight: 400;
             line-height: 24px;

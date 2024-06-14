@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewsBlockComponent } from './news-block.component';
+import { ArticlePreviewComponent } from './article-preview.component';
 
 describe('NewsBlockComponent', () => {
-  let component: NewsBlockComponent;
-  let fixture: ComponentFixture<NewsBlockComponent>;
+  let component: ArticlePreviewComponent;
+  let fixture: ComponentFixture<ArticlePreviewComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NewsBlockComponent]
+      declarations: [ArticlePreviewComponent]
     });
-    fixture = TestBed.createComponent(NewsBlockComponent);
+    fixture = TestBed.createComponent(ArticlePreviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

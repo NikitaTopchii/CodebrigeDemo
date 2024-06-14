@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DateConvertorService } from './date-convertor.service';
+import { SortArticlesService } from './sort-articles.service';
 
-describe('DataConvertorService', () => {
-  let service: DateConvertorService;
+describe('SortNewsService', () => {
+  let service: SortArticlesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DateConvertorService);
+    service = TestBed.inject(SortArticlesService);
   });
 
   it('should be created', () => {

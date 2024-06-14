@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NewsFeedService } from '../core/news-feed/news-feed.service';
-import { NewsBlock } from '../shared/types/news-block';
+import {Component, inject, OnInit} from '@angular/core';
+import { ArticlesService } from '../../../core/articles/articles.service';
+import { Article } from '../../../shared/types/article';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { SearchNewsService } from '../core/search-news/search-news.service';
-import { SortNewsService } from '../core/sort-news/sort-news.service';
+import { SearchArticlesService } from '../../../core/search-articles/search-articles.service';
+import { SortArticlesService } from '../../../core/sort-articles/sort-articles.service';
 
 @Component({
   selector: 'app-homepage',
@@ -12,43 +12,43 @@ import { SortNewsService } from '../core/sort-news/sort-news.service';
 })
 export class HomepageComponent implements OnInit{
 
-  $news!: Observable<NewsBlock[]>;
+  articles$: Observable<Article[]>;
   searchText: string = '';
 
-  private newsSubject: BehaviorSubject<NewsBlock[]> = new BehaviorSubject<NewsBlock[]>([]);
+  private articlesSubject: BehaviorSubject<Article[]> = new BehaviorSubject<Article[]>([]);
 
-  constructor(
-    private newsFeedService: NewsFeedService, 
-    private searchNewsService: SearchNewsService,
-    private sortNewsService: SortNewsService
-  ){
-    this.$news = this.newsSubject.asObservable();
+  private articlesService = inject(ArticlesService);
+  private searchArticlesService = inject(SearchArticlesService);
+  private sortArticlesService = inject(SortArticlesService);
+
+  constructor(){
+    this.articles$ = this.articlesSubject.asObservable();
   }
 
   ngOnInit(): void {
-    this.initHomepage();  
+    this.initHomepage();
   }
 
-  initHomepage(){
-    this.newsFeedService.getNewsFeed().subscribe((news: NewsBlock[]) => {
-      this.newsSubject.next(news);
+  initHomepage():void{
+    this.articlesService.getArticles().subscribe((news: Article[]) => {
+      this.articlesSubject.next(news);
     });
   }
 
-  getNewsSubject(){
-    return this.newsSubject.getValue();
+  getArticleSubject():Article[]{
+    return this.articlesSubject.getValue();
   }
 
   public onSearch(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     this.searchText = inputElement.value;
-    this.searchNewsService.search(this.searchText).subscribe((news: NewsBlock[]) => {
-      this.newsSubject.next(news);
-    });; 
+    this.searchArticlesService.searchArticlesByText(this.searchText).subscribe((news: Article[]) => {
+      this.articlesSubject.next(news);
+    });
   }
 
-  updateHighlightAmount(index: number, titleHighlightAmount: number, descriptionHighlightAmount: number, news: NewsBlock[]): void {
+  updateHighlightTextAmount(index: number, titleHighlightAmount: number, descriptionHighlightAmount: number, news: Article[]): void {
 
-    this.newsSubject.next(this.sortNewsService.updateHighlightAmount(index, titleHighlightAmount, descriptionHighlightAmount, news));
+    this.articlesSubject.next(this.sortArticlesService.updateHighlightTextAmount(index, titleHighlightAmount, descriptionHighlightAmount, news));
   }
 }

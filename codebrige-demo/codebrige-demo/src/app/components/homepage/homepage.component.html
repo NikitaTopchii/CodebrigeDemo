@@ -1,4 +1,4 @@
-<div class="homepage"> 
+<div class="homepage">
     <div class="homepage__wrapper">
         <div class="homepage__header">
             <span class="homepage__header-title">Filter by keywords</span>
@@ -6,11 +6,11 @@
                 <img src="../../../assets/search-icon.svg" class="homepage__search-icon">
                 <input class="homepage__keyboard-input" (input)="onSearch($event)">
             </div>
-            <span class="homepage__header-subtitle">Results: {{ ($news | async)?.length }}</span>
+            <span class="homepage__header-subtitle">Results: {{ (articles$ | async)?.length }}</span>
         </div>
         <div class="homepage__newsfeed">
-            @for (currentNewsBlock of $news | async; track $index) {
-                <app-news-block [currentNewsBlockData]="currentNewsBlock" [searched]="searchText" (highlightDetected)="updateHighlightAmount($index, $event.amountOfHighlightTextTitle, $event.amountOfHighlightTextDescription, getNewsSubject())"></app-news-block>
+            @for (currentNewsBlock of articles$ | async; track $index) {
+                <app-article-preview [currentArticleData]="currentNewsBlock" [searched]="searchText" (highlightDetected)="updateHighlightTextAmount($index, $event.amountTitleHighlightedText, $event.amountSummaryHighlightText, getArticleSubject())"></app-article-preview>
             }
         </div>
     </div>

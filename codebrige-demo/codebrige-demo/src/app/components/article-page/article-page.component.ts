@@ -1,7 +1,8 @@
 
-import { NewsFeedService } from '../core/news-feed/news-feed.service';
-import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { ArticlesService } from '../../../core/articles/articles.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Component, inject, OnInit} from '@angular/core';
+import {Article} from "../../../shared/types/article";
 
 @Component({
   selector: 'app-article-page',
@@ -10,28 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlePageComponent implements OnInit{
 
-  private currentNewsBlockId: number = 0;
+  private currentArticleId: number = 0;
 
-  currentNewsBlockData: any;
+  currentArticleData: Article | undefined;
 
-  constructor(private newsFeedService: NewsFeedService, private route: ActivatedRoute){
-
-  }
+  private articlesService = inject(ArticlesService);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router)
 
   ngOnInit(): void {
     this.initArticle();
   }
 
-  initArticle(){
+  initArticle():void{
     this.route.params.subscribe( params => {
-      this.currentNewsBlockId = params['id'];
+      this.currentArticleId = params['id'];
     })
-    this.getCurrentNewsBlockData();
+    this.getCurrentArticleData();
   }
 
-  getCurrentNewsBlockData(){
-    this.newsFeedService.getNewsBlockById(this.currentNewsBlockId).subscribe((newsBlock) => {
-      this.currentNewsBlockData = newsBlock;
+  private getCurrentArticleData():void{
+    this.articlesService.getArticleById(this.currentArticleId).subscribe((newsBlock) => {
+      this.currentArticleData = newsBlock;
     });
+  }
+
+  backButton():void{
+    this.router.navigate(['']);
   }
 }
