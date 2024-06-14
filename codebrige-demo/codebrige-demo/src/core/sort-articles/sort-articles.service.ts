@@ -26,10 +26,11 @@ export class SortArticlesService {
     return this.sortArticle(news);
   }
 
-  getHighlightedText(currentNewsBlockData: Article, search: string): HighlightTextAmount {
-    const amountTitleHighlightedText = this.countOccurrences(currentNewsBlockData.title.toLowerCase(), search.toLowerCase())
+  getHighlightedText(currentArticleData: Article, search: string): HighlightTextAmount {
+    console.log(currentArticleData)
+    const amountTitleHighlightedText = this.countOccurrences(currentArticleData.title.toLowerCase(), search.toLowerCase())
 
-    const amountSummaryHighlightText = this.countOccurrences(currentNewsBlockData.summary.toLowerCase(), search.toLowerCase())
+    const amountSummaryHighlightText = this.countOccurrences(currentArticleData.summary.toLowerCase(), search.toLowerCase())
 
     return { amountTitleHighlightedText, amountSummaryHighlightText }
   }

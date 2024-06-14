@@ -18,14 +18,10 @@ export class SearchArticlesService {
       summary_contains_all: searchText
     } })
     .pipe(map((response: any) => response.results))
-    .pipe(map((news: any) => {
-      return news.map((newsBlock: any) => {
+    .pipe(map((articles: any) => {
+      return articles.map((article: any) => {
         return {
-          id: newsBlock.id,
-          imageUrl: newsBlock.image_url,
-          title: newsBlock.title,
-          publishDate: newsBlock.published_at,
-          shortDescription: newsBlock.summary,
+          ...article,
           titleHighlightAmount: 0,
           descriptionHighlightAmount: 0
         }
